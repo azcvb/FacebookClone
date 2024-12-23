@@ -1,0 +1,26 @@
+.wrapper {
+    --search-border-radius: 92px;
+    --search-top-spacer: 9px;
+    width: 100%;
+    box-shadow: 0px 5px 5px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+    background-color: var(--white);
+}
+.MenuItem{
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+    width: 344px;
+    .menu-item{
+        height: 52px;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        &:hover{
+            border-radius: 5px;
+            background-color: rgba(22, 24, 35, 0.05);
+        }
+    }
+}

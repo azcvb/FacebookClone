@@ -1,0 +1,18 @@
+.iconBorder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #a7a7a7, $alpha: 0.3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 8px 12px 8px 0;
+}
+.iconRight{
+    svg{
+        color:  #a7a7a7;
+    }
+}
+.title {
+    flex: 1;
+}
