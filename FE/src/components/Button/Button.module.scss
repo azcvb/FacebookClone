@@ -1,3 +1,16 @@
+.wrapper{
+    display: flex;
+    div{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .childrenTitle{
+            font-size: 13px;
+            color: #65686C;
+        }
+    }
+}
+
 .iconBorder{
     display: flex;
     align-items: center;
@@ -13,6 +26,4 @@
         color:  #a7a7a7;
     }
 }
-.title {
-    flex: 1;
-}
+

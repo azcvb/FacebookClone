@@ -9,6 +9,7 @@ function Button({
     href,
     children,
     onClick,
+    className,
     leftIcon,
     rightIcon,
     classIconLeft,
@@ -28,7 +29,7 @@ function Button({
         Comp = 'a';
     }
     const classes = cx('wrapper', {
-
+        [className]: true
     })
     const classIconL = cx('icon', {
         [classIconLeft]: true
@@ -39,7 +40,10 @@ function Button({
     return (
         <Comp className={classes} {...props}>
             {leftIcon && <span className={classIconL}>{leftIcon}</span>}
-            <span className={cx('title')}>{children}</span>
+            <div>
+                <span className={cx('title')}>{typeof children === 'string' ? children : children.title}</span>
+                {typeof children === 'object' ? (<span className={cx('childrenTitle')}>{children.childrenTitle}</span>) : null}    
+            </div>
             {rightIcon && <span className={classIconR}>{rightIcon}</span>}
         </Comp>
     );

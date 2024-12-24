@@ -13,7 +13,10 @@ export const menuUser = {
         0: 'Cài đặt & quyền riêng tư',
         1: 'Trợ giúp & hỗ trợ',
         2: 'Màn hình & trợ năng',
-        3: 'Đóng góp ý kiến',
+        3: {
+            title: 'Đóng góp ý kiến',
+            childrenTitle: 'CTRL B'
+        },
         4: 'Đăng xuất'
     },
     to: {
@@ -21,13 +24,12 @@ export const menuUser = {
         1: '/',
         2: 'Màn hình & trợ năng',
         3: 'Đóng góp ý kiến',
-        4: 'Đăng xuất'
+        4: 'logout'
     },
     childrenItem: {
         endIcon: [0,1,2],
         children: {
-            index: '3',
-            content: 'CTRL B'
+            3: 'CTRL B'
         }
     },
     endItem: {
@@ -36,7 +38,6 @@ export const menuUser = {
         2: 'Quảng cáo',
         3: 'Lựa chọn quảng cáo',
         4: 'Cookie',
-        5: 'Xem thêm',
-        6: 'Meta © 2024'
+        5: 'Xem thêm'
     }
 }

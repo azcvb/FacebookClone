@@ -91,9 +91,11 @@ function Header() {
                         
                         <div>
                             <MenuUser visible={isVisible} onClickOutside={() => setIsVisible(false)}>
-                                <button className={cx('action-btn')} onClick={handleToggle}>
+                                <Tippy delay={[0, 50]} content="Tài khoản" placement="bottom">
+                                    <button className={cx('action-btn')} onClick={handleToggle}>
                                         <UserIcon />
-                                </button>
+                                    </button>
+                                </Tippy>
                             </MenuUser>
                         </div>
                     </>
