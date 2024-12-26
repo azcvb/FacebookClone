@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import 'tippy.js/dist/tippy.css';
 
 import config from '~/config'
-import images from '~/assets/images';
+import {images} from '~/assets/images';
 import styles from './Header.module.scss';
 import Search from '~/Layouts/Components/Search';
 import { FriendIcon, GroupIcon, HomeIcon, MarketplaceIcon, MenuIcon, MessagerIcon, NotificationIcon, UserIcon, VideoIcon } from '~/components/Icons/Icon';

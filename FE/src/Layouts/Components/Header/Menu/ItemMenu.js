@@ -21,10 +21,10 @@ export const menuUser = {
     },
     to: {
         0: '/',
-        1: '/',
-        2: 'Màn hình & trợ năng',
-        3: 'Đóng góp ý kiến',
-        4: 'logout'
+        1: 'logo',
+        2: 'tronang',
+        3: '/donggop',
+        4: '/login'
     },
     childrenItem: {
         endIcon: [0,1,2],

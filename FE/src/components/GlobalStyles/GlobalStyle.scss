@@ -83,3 +83,10 @@ body {
         top: -8px;
     }
 }
+
+.wrapper {
+    background-color: var(--white);
+    box-shadow: 0 0 5px 3px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+    padding-top: 8px;
+}

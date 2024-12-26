@@ -1,0 +1,132 @@
+.container{
+    background-color: #f2f4f7;
+    
+    
+}
+.containerContent {
+    font-family: Helvetica, sans-serif;
+    position: relative;
+    width: 980px;
+    margin: 0 auto;
+    padding: 72px 0 112px;
+    min-height: 500px;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    min-height: 500px;
+    padding-top: 20px;
+    line-height: 1.34;
+    
+}
+.leftContent{
+    flex: 1;
+    display: inline-block;
+    padding-right: 32px;
+    .logoFace{
+        padding: 112px 0 16px;
+        img{
+            margin-left: -30px;
+            height: 106px;
+        }
+    }
+    h2{
+        font-size: 24px;
+        font-weight: 400;
+        width: 368px;
+        padding-bottom: 20px;
+        margin: 0;
+    }
+}
+@mixin flexColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.rightContent {
+    width: 396px;
+    margin-top: 40px;
+    
+    .fromLogin{
+        @include flexColumn; 
+        padding: 10px 0 24px;
+        div{
+            @include flexColumn;
+            margin-bottom: 6px;
+           
+            input, button{
+                margin: 6px 0;
+                width: 364px;
+            }
+            input{
+                padding: 14px 16px;
+                border: 1px solid #dddfe2;
+                border-radius: 5px;
+                font-size: 17px;
+                &:focus{
+                    box-shadow: 0 0 5px 1px rgba($color: #0866ff, $alpha: 0.95);
+                    &::placeholder{
+                        color: #515253;
+                    }
+                }
+            }
+            button{
+                background-color: #0866ff;
+                color: #fff;
+                font-weight: 700;
+                border-radius: 5px;
+                font-size: 20px;
+                height: 48px;
+                &:hover{
+                    border: none;
+                    background-color: rgba($color: #0866ff, $alpha: 0.95);
+
+                }
+                
+                
+            }
+            .forgotPass{
+                text-align: center;
+                color: #0866ff;
+                font-size: 14px;
+                margin-top: 16px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            
+        }
+    }
+    hr{
+        margin: 20px 16px;
+        width: 90%;
+    }
+    .btnNewAccount{
+        background-color: #42b72a;
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 17px;
+        &:hover{
+            cursor: pointer;
+            background-color: rgba($color: #42b72a, $alpha: 0.95);
+        }
+        a{
+            color: #fff;
+        }
+    }
+    .footRightContent{
+        margin-top: 28px;
+        font-size: 14px;
+        text-align: center;
+        a{
+            text-align:justify;
+            font-weight: 600;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}

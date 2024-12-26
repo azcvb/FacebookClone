@@ -28,6 +28,7 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
+    console.log(Comp)
     const classes = cx('wrapper', {
         [className]: true
     })

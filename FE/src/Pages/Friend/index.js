@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 function Friend() {
-    return <h2>Friend page</h2>;
+    return <Link to={'/login'}>Friend page</Link>;
 }
 
 export default Friend;
