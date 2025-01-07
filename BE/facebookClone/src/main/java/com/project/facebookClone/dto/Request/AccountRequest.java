@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.project.facebookClone.Entity.Account;
 
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +18,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AccountRequest {
+	@Size(min = 6, message = "USERNAME_INVALID")
 	String tendangnhap;
 	String email;
 	String sodienthoai;
