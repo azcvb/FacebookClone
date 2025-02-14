@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "thongtincanhan")
+@Table(name = "info_personal")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,12 +29,12 @@ public class InfoPersonal {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	String id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "taikhoan_id")
-	Account account; 
-	
-	String hoten;
-	Date ngaysinh;
-	String gioitinh;
-	String diachi;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_user_id")
+    User user;
+    
+    String firstName;
+    String lastName;
+    Date dob;
+    String gender;
 }

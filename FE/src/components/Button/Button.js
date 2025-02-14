@@ -28,7 +28,6 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
-    console.log(Comp)
     const classes = cx('wrapper', {
         [className]: true
     })
@@ -42,7 +41,7 @@ function Button({
         <Comp className={classes} {...props}>
             {leftIcon && <span className={classIconL}>{leftIcon}</span>}
             <div>
-                <span className={cx('title')}>{typeof children === 'string' ? children : children.title}</span>
+                <span onClick={onClick} className={cx('title')}>{typeof children === 'string' ? children : children.title}</span>
                 {typeof children === 'object' ? (<span className={cx('childrenTitle')}>{children.childrenTitle}</span>) : null}    
             </div>
             {rightIcon && <span className={classIconR}>{rightIcon}</span>}

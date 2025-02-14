@@ -13,8 +13,6 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthencationRequest {
-	
-	String tendangnhap;
-	String matkhau;
-
+	String username;
+	String password;
 }

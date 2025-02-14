@@ -8,7 +8,7 @@ const routes = {
     video: '/video',
     marketplace: '/marketplace',
     group: '/group',
-    login: '/login',
+    logout: '/logout',
     register: '/register',
 };
 

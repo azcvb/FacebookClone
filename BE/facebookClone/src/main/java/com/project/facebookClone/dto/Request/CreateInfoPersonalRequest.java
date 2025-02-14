@@ -1,4 +1,7 @@
-package com.project.facebookClone.dto.Response;
+package com.project.facebookClone.dto.Request;
+
+import java.time.LocalDate;
+
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,6 +15,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class IntrospectResponse {
-	boolean authencated;
+public class CreateInfoPersonalRequest {
+	String firtname;
+    String lastname;
+    String gender;
+    LocalDate dob;
 }

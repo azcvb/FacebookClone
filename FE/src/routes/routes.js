@@ -22,7 +22,7 @@ const publicRoutes = [
     { path: config.routes.video, component: Video, },
     { path: config.routes.marketplace, component: Marketplace, },
     { path: config.routes.group, component: Group, },
-    { path: config.routes.login, component: Login, layout: null},
+    { path: config.routes.logout, component: Login, layout: null},
     { path: config.routes.register, component: Register, layout: null},
 ]
 

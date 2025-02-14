@@ -1,7 +1,11 @@
 
+import logoutService from "~/apiService/logoutService"
 import { HelpIcon, LogoutIcon, MoonIcon, PoinionIcon, SettingIcon,  } from "~/components/Icons/Icon"
 
 export const menuUser = {
+    evenOnclick: {
+        0: [logoutService, 4],
+    },
     icon: {
         0: SettingIcon,
         1: HelpIcon,
@@ -24,7 +28,7 @@ export const menuUser = {
         1: 'logo',
         2: 'tronang',
         3: '/donggop',
-        4: '/login'
+        4: '/logout'
     },
     childrenItem: {
         endIcon: [0,1,2],

@@ -15,7 +15,7 @@ function MenuItem({ data, onClick }) {
             leftIcon={data.leftIcon}  
             to={data.to}
             rightIcon={data.rightIcon}
-            onClick={onClick} 
+            onClick={() => (data.evenOnclick || onClick)()} 
             classIconLeft={data.classIconLeft}
             classIconRight={data.classIconRight}
         >

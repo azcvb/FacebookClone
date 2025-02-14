@@ -1,5 +1,6 @@
 package com.project.facebookClone.dto.Response;
 
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,5 +15,5 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthencationResponse {
 	String token;
-	boolean authencation;
+	boolean authencated;
 }

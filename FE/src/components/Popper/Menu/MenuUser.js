@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { AngleRightIcon, ChangeUser, CShangeUser, UserIcon } from '~/components/Icons/Icon'; 
+import { AngleRightIcon, ChangeUser, UserIcon } from '~/components/Icons/Icon'; 
 import classNames from 'classnames/bind';
 
 
 import MenuItem from './MenuItem';
 import { menuUser } from '~/Layouts/Components/Header/Menu/ItemMenu';
 import styles from './Menu.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const cx = classNames.bind(styles);
 function MenuUser({ children, visible, onClickOutside }) {
@@ -21,10 +20,17 @@ function MenuUser({ children, visible, onClickOutside }) {
     
     const updatedItems = Object.values(menuUser.items).map((item, index) => {
       let rightIcon = undefined;
+      let eOnclick = undefined;
       if (menuUser.childrenItem.endIcon.includes(index)) {
         rightIcon = React.createElement(AngleRightIcon);
       }
+      Object.values(menuUser.evenOnclick).map((value) => {
+        if(value[1] === index) {
+          eOnclick = value[0]
+        }
+      })
       return {
+        evenOnclick: eOnclick,
         title: item, 
         leftIcon: React.createElement(menuUser.icon[index]),
         rightIcon: rightIcon,
@@ -55,7 +61,10 @@ function MenuUser({ children, visible, onClickOutside }) {
   }, []);
   const renderResult = (attrs) => {
     if (visible === true) {
-
+  
+      const test = () => {
+        console.log("data")
+      }
       return (
         <div tabIndex="-1" {...attrs} className={cx('wrapper')}>
           <div className={(cx('pageUser', 'wrapper'))}>
@@ -84,7 +93,7 @@ function MenuUser({ children, visible, onClickOutside }) {
           </div>
           <div className={cx('MenuItem')}>
               {items.map((item, index) => (
-                <MenuItem key={index} data={item} className={'hiddenTippy'} />
+                <MenuItem onClick={test} key={index} data={item} className={'hiddenTippy'} />
               ))}
           </div>
           <div className={cx('bottomMenu')}>

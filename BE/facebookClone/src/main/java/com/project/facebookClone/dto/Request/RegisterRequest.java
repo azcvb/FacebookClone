@@ -1,10 +1,8 @@
 package com.project.facebookClone.dto.Request;
 
+
 import java.sql.Date;
 
-import com.project.facebookClone.Entity.Account;
-
-import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +15,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AccountRequest {
-	@Size(min = 6, message = "USERNAME_INVALID")
-	String tendangnhap;
-	String email;
-	String sodienthoai;
-	String matkhau;
-	Date ngaydangky;
+public class RegisterRequest {
+	String username;
+    String password;
+    String email;
+    String firstName;
+    String lastName;
+    Date dob;
+    String gender;
 }
