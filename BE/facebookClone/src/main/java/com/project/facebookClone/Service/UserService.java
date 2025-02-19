@@ -37,7 +37,6 @@ public class UserService {
         User user = User.builder()
         		.username(request.getUsername())
         		.password(passwordEncoder.encode(request.getPassword()))
-        		.email(request.getEmail())
         		.dateSign(LocalDate.now())
         		.build();
         InfoPersonal infoPersonal = InfoPersonal.builder()

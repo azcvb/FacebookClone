@@ -11,7 +11,9 @@ public enum ErrorCode {
 	USER_NOT_EXITSTED(1001, "User not exitsted.", HttpStatus.BAD_REQUEST),
 	USER_EXITSTED(1003, "User exitsted", HttpStatus.BAD_REQUEST),
 	UNAUTHENCATED(1002, "Unauthencated", HttpStatus.UNAUTHORIZED),
-	PASSWORD_NOT_EXITED(1004, "Password not exited.", HttpStatus.BAD_REQUEST)
+	PASSWORD_NOT_EXITED(1004, "Password not exited.", HttpStatus.BAD_REQUEST),
+	INVALID_KEY(1005, "not fount key", HttpStatus.BAD_REQUEST),
+	INVALID_USERNAME(1006, "Invalid username", HttpStatus.BAD_REQUEST)
 	
 	;
 	private int code;

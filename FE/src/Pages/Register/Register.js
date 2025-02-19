@@ -4,10 +4,16 @@ import { imgFacebook } from "~/assets/images";
 import { Link } from "react-router-dom";
 import { FooterForLogout } from "~/Layouts/Components/Footers";
 import * as createUserService  from "~/apiService/createUserService";
-import {useState } from "react";
+import {useEffect, useState } from "react";
 
 const cx = classNames.bind(styles)
 function Register() {
+    const [boxErr, setBoxErr] = useState({
+        "isErr": false,
+        "inputErr": "",
+        "value": ""
+    });
+    const [isChange, setIsChange] = useState(true)
     const date = new Date();
     const [dob, setDob] = useState(date.toISOString().split("T")[0])
     const toMonth = date.getMonth()+1;
@@ -51,8 +57,65 @@ function Register() {
         }
        
     }
+    const validEmail = (value) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(value);
+    }
+    const validPhone = (value) => {
+        const regex = /^0\d{9,10}$/;
+        return regex.test(value);
+    }
+    const validPassword = (value) => {
+        const regex = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/;
+        return regex.test(value);
+      };
+    const validDob = (value) => {
+        const dob = new Date(value)
+        const today = new Date()
+        
+        let age = today.getFullYear() - dob.getFullYear()
+
+        const monthDiff = today.getMonth() - dob.getMonth()
+        if(monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())){
+            age--;
+        }
+        return age >= 18
+    }
+    const handllerClickIp = (input, value, e) => {
+        if(e === "") 
+            {setIsChange(true)
+
+            }else{setIsChange(false)}
+        setBoxErr((prev) => ({
+            ...prev,
+            isErr: true,
+            inputErr: input,
+            value: value
+        }))
+       
+    }
+    const handleBlurIp = () => {
+        if(boxErr.inputErr === "username") {
+            if(validEmail(boxErr.value || validPhone(boxErr.value))){
+                handllerClickIp("username", "Bạn có thể sử dụng thông tin này khi đăng nhập và khi cần đặt lại mật khẩu.", "")
+            }
+        }
+        setBoxErr((prev) => ({
+            ...prev,
+            isErr: false
+        }))
+    }
+  
+    const box = (value) => {
+        return (<div className={`col ${cx("box-child")}`}>
+                <div className={cx('box-err')}>
+                    <p>{value}</p>
+                </div>
+                <div className={cx('triangle-right')}></div>
+                </div>)
+    }
     const createUser = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const formData = new FormData(e.target);
         const jsonObject = {};
     
@@ -60,16 +123,46 @@ function Register() {
             jsonObject[key] = value;
         });
         jsonObject["dob"] = dob
+        if(!validDob(jsonObject.dob)){
+            setIsChange(true)
+            setBoxErr((prev) => ({
+                ...prev,
+                isErr: true,
+                inputErr: "date",
+                value: "Có vẻ như tuổi của bạn chưa đủ 18."
+            }))
+            return;
+        }
+        if(!validPhone(jsonObject.username) && !validEmail(jsonObject.username)){
+            setIsChange(true)
+            setBoxErr((prev) => ({
+                ...prev,
+                isErr: true,
+                inputErr: "username",
+                value: "Bạn cần nhập đúng thông tin đăng nhập."
+            }))
+            return;
+        }
+        if(!validPassword(jsonObject.password)){
+            setIsChange(true)
+            setBoxErr((prev) => ({
+                ...prev,
+                isErr: true,
+                inputErr: "password",
+                value: "Nhập mật khẩu có tối thiểu 6 ký tự bao gồm số, chữ cái và dấu câu(như ! và &)"
+            }))
+            return;
+        }
         try {
             await createUserService.createUser(jsonObject)
-            window.location.href("http://localhost:3000/logout")
+            window.location.href =  ("http://localhost:3000/logout")
 
         } catch (error) { 
             console.error("Lỗi khi gửi dữ liệu:", error);
         }
     };
     
-    
+ 
     return (
             <div className={cx('container')}>
                 <div className={cx('logo')}>
@@ -84,15 +177,21 @@ function Register() {
                     <div className={cx('fromRegister')}>
                         <div className={cx('userName')}>
                             <div className={`row ${cx("rowContent")}`}>
-                                <div className={`col ${cx("")}`}>
-                                    <input name="firstName" type="text" className={`form-control `} placeholder="Họ" aria-label="First name"/>
+                                <div className={`col ${cx("box-parent")}`}>
+                                    {boxErr.isErr && boxErr.inputErr === "firstName" && isChange ? box(boxErr.value) : ""}
+                                    <input 
+                                        onBlur = {() => handleBlurIp()} 
+                                        onClick={(e) => handllerClickIp("firstName", "Tên của bạn là gì?", e.target.value)} 
+                                        name="firstName" type="text" className={`form-control `} placeholder="Họ" aria-label="First name" required/>
                                 </div>
-                                <div className={`col ${cx("")}`}>
-                                    <input name="lastName" type="text" className={`form-control `} placeholder="Tên" aria-label="Last name"/>
+                                <div className={`col ${cx("box-parent")}`}>
+                                    {boxErr.isErr && boxErr.inputErr === "lastName" && isChange ? box(boxErr.value) : ""}
+                                    <input onBlur = {() => handleBlurIp()} onClick={(e) => handllerClickIp("lastName", "Tên của bạn là gì?", e.target.value)}  name="lastName" type="text" className={`form-control `} placeholder="Tên" aria-label="Last name" required/>
                                 </div>
                             </div>
                         </div>
-                        <div className={cx('dateTime')}>
+                        <div className={cx('dateTime', 'box-parent')}>
+                        {boxErr.isErr && boxErr.inputErr === "date"  && isChange ? box(boxErr.value) : ""}
                             <p>
                                 Ngày sinh
                             </p>
@@ -123,14 +222,15 @@ function Register() {
                                 </div>
                             </div>
                         </div>
-                        <div className={cx('gender')}>
+                        <div className={cx('gender', 'box-parent')}>
+                            
                             <p>
                                 Giới tính
                             </p>
                                 <div>
                                     <div className={cx("form-check-inline", "genderOption")}>
                                         <label className={cx("form-check-label")} htmlFor="inlineRadio1">Nữ</label>
-                                        <input className={cx("form-check-input")} type="radio" name="gender" id="inlineRadio1" value="Nữ" defaultChecked  />
+                                        <input className={cx("form-check-input")} type="radio" name="gender" id="inlineRadio1" value="Nữ" defaultChecked />
                                     </div>
                                     <div className={cx(" form-check-inline", "genderOption")}>
                                         <label className={cx("form-check-label")} htmlFor="inlineRadio2">Nam</label>
@@ -143,11 +243,19 @@ function Register() {
                                 </div>
                         </div>
                         <div className={cx('userAcc')}>
-                            <div className={cx("col")}>
-                                <input name="username" type="text" className={cx("form-control")} placeholder="Số điện thoại hoặc email" aria-label="Số điện thoại hoặc email"/>
+                            <div className={cx("col", 'box-parent')}>
+                            {boxErr.isErr && boxErr.inputErr === "username" && isChange ? box(boxErr.value) : ""}
+                                <input 
+                                    onBlur = {() => handleBlurIp()} 
+                                    onClick={(e) => handllerClickIp("username", "Bạn có thể sử dụng thông tin này khi đăng nhập và khi cần đặt lại mật khẩu.",e.target.value)} 
+                                    name="username" type="text" className={cx("form-control")} placeholder="Số điện thoại hoặc email" aria-label="Số điện thoại hoặc email" required/>
                             </div>
-                            <div className={cx("col")}>
-                                <input name="password" type="password" className={cx("form-control")} placeholder="Mật khẩu mới" aria-label="Mật khẩu mới"/>
+                            <div className={cx("col", 'box-parent')}>
+                            {boxErr.isErr && boxErr.inputErr === "password" && isChange ? box(boxErr.value) : ""}
+                                <input 
+                                onBlur = {() => handleBlurIp()} 
+                                onClick={(e) => handllerClickIp("password", "Nhập mật khẩu có tối thiểu 6 ký tự bao gồm số, chữ cái và dấu câu(như ! và &)", e.target.value)} 
+                                name="password" type="password" className={cx("form-control")} placeholder="Mật khẩu mới" aria-label="Mật khẩu mới" required/>
                             </div>
                         </div>
                     </div>

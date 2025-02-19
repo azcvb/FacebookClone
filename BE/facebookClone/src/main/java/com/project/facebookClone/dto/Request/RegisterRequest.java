@@ -3,6 +3,11 @@ package com.project.facebookClone.dto.Request;
 
 import java.sql.Date;
 
+import com.project.facebookClone.Validator.PhoneNumberConstraint;
+
+import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,10 +21,13 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RegisterRequest {
+	@NotEmpty
 	String username;
+	@NotEmpty
     String password;
-    String email;
+	@NotEmpty
     String firstName;
+	@NotEmpty
     String lastName;
     Date dob;
     String gender;

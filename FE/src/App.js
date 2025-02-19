@@ -11,7 +11,6 @@ function App() {
           {publicRoutes.map((route, index) => {
             const Page = route.component;
             let Layout = DefaultLayout;
-            let sidebarPages = route.path;
 
             if (route.layout === null) {
               Layout = Fragment;
@@ -24,8 +23,8 @@ function App() {
                 path={route.path}
                 element={
                   Layout !== Fragment ? (
-                    <Layout sidebarPages={sidebarPages} >
-                      <Page />
+                    <Layout>
+                      <Page/>
                     </Layout>
                     
                   ) : (
