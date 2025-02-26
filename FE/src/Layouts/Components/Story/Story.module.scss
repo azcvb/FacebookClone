@@ -1,0 +1,39 @@
+.storyContainer{
+    position: relative;
+    width: 113px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 0 4px;
+    padding: 0 !important;
+    .story_thum{
+        position: relative;
+        >img{
+            width: 113px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .story_avata{
+            position: absolute;
+            top: 0;
+            padding: 12px;
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 5px solid blue;
+                
+            }
+        }
+        
+    }
+    span{
+        position: absolute;
+        color: #fff;
+        text-align: center;
+        font-weight: 600;
+        bottom: 0;
+        width: 100%;
+        padding: 0 12px 12px 12px;
+    }
+}

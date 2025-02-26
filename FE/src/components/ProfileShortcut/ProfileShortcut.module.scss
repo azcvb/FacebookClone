@@ -1,4 +1,14 @@
-.img-shortcut {
-    width: 28px;
-    height: 28px;
+
+.box-parent{
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    height: 44px;
+    i, svg{
+        margin: 8px 12px 8px 0;
+    }
+    span {
+        font-weight: 600;
+        font-size: 15px;
+    }
 }

@@ -1,0 +1,28 @@
+.wrapper{
+    width: 360px;
+    margin-top: 16px;
+    ul {
+        padding-left: 8px;
+    }
+    li {
+        list-style-type: none;
+        height: 44px;
+        &:hover{
+            background-color: #e6e8ea;
+            border-radius: 5px;
+        }
+    }
+    .line{
+        border-Bottom: 1px solid #ccc;
+        width: 95%;
+        margin:  8px 16px 1px
+
+    }
+    ul{
+        span{
+            text-align: center;
+        }
+    }
+    
+}
+

@@ -7,6 +7,7 @@
     --text-color: #161823;
     --fb-logo: #1877f2;
     --color-default: #0866ff;
+    --primary-icon: #e2e5e9;
 
     --font-family: "Segoe UI";
 
@@ -92,4 +93,11 @@ body {
 }
 .err-input {
     box-shadow: 0 0 5px 3px rgb(237, 73, 73) ;
+}
+.line {
+    border-Bottom: 1px solid #e2e5e9;
+    width: 95%;
+}
+.styleHiden{
+    display: none;
 }

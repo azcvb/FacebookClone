@@ -9,10 +9,13 @@ function ProfileShortcut({
     to,
     text,
     icon,
+    imgPosition,
+    img,
     onClick,
     customClass, 
     ...passProps
 }) {
+    
     return ( 
         <Link 
             to={to} 
@@ -20,8 +23,19 @@ function ProfileShortcut({
             className={cx("box-parent", customClass)} 
             {...passProps}
         >
-            {icon && <img src={icon} alt="icon" className={cx("img-shortcut")} />}
-            <div>{text}</div>
+              {icon || <i
+                data-visualcompletion="css-img"
+                style={{
+                  backgroundImage: `url(${img})`,
+                  backgroundPosition: imgPosition,
+                  backgroundSize: "auto",
+                  width: "36px",
+                  height: "36px",
+                  backgroundRepeat: "no-repeat",
+                  display: "inline-block"
+                }}
+              ></i>}
+            <span>{text}</span>
         </Link>
     );
 }

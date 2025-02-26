@@ -110,7 +110,7 @@ public class AuthenticationService  {
 		JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
 				.subject(user.getUsername())
 				.issueTime(new Date())
-				.expirationTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
+				.expirationTime(new Date(Instant.now().plus(1, ChronoUnit.DAYS).toEpochMilli()))
 				.jwtID(UUID.randomUUID().toString())
 				.build();
 		Payload payload = new Payload(jwtClaimsSet.toJSONObject());
