@@ -22,10 +22,10 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 	
 	private final String[] PUBLIC_ENDPOINTS = {
-			"/users", "/auth/token", "/auth/login"
+			"/users", "/auth/token", "/auth/login", "/friend", "post"
 	};
 	private final String[] PUBLIC_GET_ENDPOINTS = {
-			"/users", "/auth/introspect"
+			"/users", "/auth/introspect", "/friend"
 	};
 	@Autowired
 	private CustomJwtDecoder customJwtDecoder;	
@@ -65,4 +65,11 @@ public class SecurityConfig {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
+	
+	public String validInputToken(String token) {
+		if(token.startsWith("Bearer ")) {
+			token = token.substring(7);
+		}
+		return token;
+	}
 }

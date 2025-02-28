@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { IconPlus, NextIcon, PrevIcon } from "~/components/Icons/Icon";
 import Story from "~/Layouts/Components/Story";
 import Post from "~/Layouts/Components/Post";
+import { listSidebarHome } from "~/constList/constList";
 
 const cx = classNames.bind(style)
 function Home() {
@@ -18,7 +19,6 @@ function Home() {
            
           try {
             const res = await loginTokenService();
-          
             if(!res || !res.result.authencated) {
               window.location.href = ("http://localhost:3000/logout")
             }
@@ -30,7 +30,9 @@ function Home() {
       }, []);
     return (
          <div className={cx("wrapper")} >
-            <SidebarHome/>
+            <SidebarHome
+              list = {listSidebarHome}
+            />
             <div className={cx("content")}>
               <div className={`wrapper ${cx("createPost")}`}>
                 <div className={cx("createPost_")}>
@@ -175,7 +177,7 @@ function Home() {
                   />
               </div>
             </div>
-            <SidebarHome/>
+            {/* <SidebarHome/> */}
          </div>
         );
 }

@@ -27,8 +27,8 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class UserService {
-    UserRepository userRepository;
-    InfoPersonalRepository infoPersonalRepository;
+	UserRepository userRepository;
+	InfoPersonalRepository infoPersonalRepository;
     RegisterMapper registerMapper;
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;

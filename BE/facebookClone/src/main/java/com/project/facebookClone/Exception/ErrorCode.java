@@ -13,8 +13,8 @@ public enum ErrorCode {
 	UNAUTHENCATED(1002, "Unauthencated", HttpStatus.UNAUTHORIZED),
 	PASSWORD_NOT_EXITED(1004, "Password not exited.", HttpStatus.BAD_REQUEST),
 	INVALID_KEY(1005, "not fount key", HttpStatus.BAD_REQUEST),
-	INVALID_USERNAME(1006, "Invalid username", HttpStatus.BAD_REQUEST)
-	
+	INVALID_USERNAME(1006, "Invalid username", HttpStatus.BAD_REQUEST),
+	POST_NOT_EXITED(1007, "Post not exited", HttpStatus.BAD_REQUEST)
 	;
 	private int code;
 	private String message;

@@ -13,11 +13,11 @@ const request = axios.create({
 request.interceptors.request.use(async (config) => {
     const token = Cookies.get('Token');
 
-    const exceptionApi = ["auth/login"]
-    if(!token || exceptionApi.some(endPoint => config.url.includes(endPoint))) {
+    const api = ["auth/introspect"]
+    if(api.some(endPoint => config.url.includes(endPoint))) {
+        config.headers.Authorization = `Bearer ${token}`
         return config;
     }
-    config.headers.Authorization = `Bearer ${token}`
     return config;
 }, (err) => {
     return Promise.reject(err)
