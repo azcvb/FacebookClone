@@ -1,6 +1,6 @@
 .wrapper{
     width: 360px;
-    margin-top: 16px;
+    margin-top: 72px;
     position: fixed;
     top: 0;
     left: 0;
@@ -27,5 +27,33 @@
         }
     }
     
+}
+.friend{
+    right: 0;
+    left: auto;
+    img{
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+        border: 1px solid #b7b5b5;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .text{
+        flex: 1;
+    }
+    .icon{
+        i{
+            padding: 10px;
+            border-radius: 50%;
+            &:hover{
+                cursor: pointer;
+                background-color: #e6e8ea;
+            }
+        }
+    }
 }
 

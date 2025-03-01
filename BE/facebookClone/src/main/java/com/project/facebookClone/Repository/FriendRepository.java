@@ -11,6 +11,6 @@ import com.project.facebookClone.Entity.Friend;
 
 @Repository
 public interface FriendRepository extends JpaRepository<Friend, String>{
-	@Query(value = "SELECT * FROM friend WHERE user_id1 = :userId1", nativeQuery = true)
+	@Query(value = "SELECT * FROM friend WHERE user_id1 = :userId1 and status = 'ACCEPTED'", nativeQuery = true)
 	List<Friend> findAllByUserId1(@Param("userId1") String userId);
 }

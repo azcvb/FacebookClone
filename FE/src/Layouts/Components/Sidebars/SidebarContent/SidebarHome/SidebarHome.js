@@ -3,14 +3,25 @@ import ProfileShortcut from '~/components/ProfileShortcut';
 import styles from "./SidebarHome.module.scss"
 import classNames from 'classnames/bind';
 import React from 'react';
+import { OptionIcon, SearchIcon } from '~/components/Icons/Icon';
 
 const cx = classNames.bind(styles)
 
 function SidebarHome({
-    list
+    list,
+    friend
 }) {
     return (
-        <div className={cx("wrapper")}>
+        <div className={`${friend ? cx("friend") :""} ${cx("wrapper")}`}>
+            {friend ? <div className={cx("header")}>
+                <div className={cx("text")}>
+                    <span>Người liên hệ</span>
+                </div>
+                <div className={cx("icon")}>
+                    <i><SearchIcon/></i>
+                    <i><OptionIcon/></i>
+                </div>
+            </div> :""}
             <ul>
             {Object.values(list).map((value, index) => (
                 <li key={index}>
@@ -19,7 +30,7 @@ function SidebarHome({
                         text= {value.text}
                         img= {value.img}
                         imgPosition={value.imgPosition}
-                        // icon= {React.createElement(value.icon)}
+                        friend={friend}
                     />
                 </li>
                 ))}

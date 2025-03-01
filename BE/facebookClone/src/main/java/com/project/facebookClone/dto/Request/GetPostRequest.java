@@ -1,5 +1,7 @@
 package com.project.facebookClone.dto.Request;
 
+import java.util.List;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,5 +15,5 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GetPostRequest {
-	String friendId;
+	List<String> friendId;
 }

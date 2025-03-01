@@ -13,6 +13,7 @@ function ProfileShortcut({
     img,
     onClick,
     customClass, 
+    friend,
     ...passProps
 }) {
     
@@ -23,7 +24,7 @@ function ProfileShortcut({
             className={cx("box-parent", customClass)} 
             {...passProps}
         >
-              {icon || <i
+              {friend ? <img src={img} alt=""/> :icon || <i
                 data-visualcompletion="css-img"
                 style={{
                   backgroundImage: `url(${img})`,

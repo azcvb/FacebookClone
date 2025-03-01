@@ -3,6 +3,7 @@ package com.project.facebookClone.Controller;
 import java.text.ParseException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class FriendController {
 	public ApiResponse<AddFriendReponse> addFriend(@Valid @RequestBody AddFriendRequest request) {
 		return ApiResponse.<AddFriendReponse>builder()
 				.result(friendService.addFriend(request))
-				.build()	;
+				.build();
 	}
 	
 	@GetMapping
